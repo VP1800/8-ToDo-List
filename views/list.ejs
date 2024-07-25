@@ -9,12 +9,15 @@
             <h1>ToDo List</h1>
         </div>
         <div class="box">
-            <% for(var i=0; i< dayej.length ; i++ ) { %>
-            <div class="item">
-                <input type="checkbox">
-                <p><%= dayej[i].name %></p>
-            </div>
-            <%}%>
+            <% dayej.forEach(function(items){ %>
+                <form action="/delete" method="post">
+                    <div class="item">
+                        <input type="checkbox" name="checkbox1" value="<%= items._id%>" onchange="this.form.submit()">
+                        <p><%= items.name %></p>
+                    </div>
+                </form>
+            
+            <%})%>
 
             <form action="/" method="POST" class="item">
                 <input type="text" name="ele1" placeholder="Enter the task" id="">
